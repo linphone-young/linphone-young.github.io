@@ -88,7 +88,26 @@
     font-display: swap;
     src: url('/fonts/times.ttf') format("truetype");
 }
-  
-//body {
-//   font-family: "Arial", sans-serif !important;
-//}
+@font-face {
+    /*字体名称，名字可以随便起，但是注意要一致，建议英文*/
+    font-family: 'newtimesb';
+    font-display: swap;
+    src: url('/fonts/timesbi.ttf') format("truetype");
+}
+#subtitle {
+   font-family: "newtimesb", sans-serif !important;
+}
+@font-face {
+font-family: "iconfont";
+src: url('//at.alicdn.com/t/c/font_3829267_g9vxomx6ua4.woff2') format('woff2'),
+url('//at.alicdn.com/t/c/font_3829267_g9vxomx6ua4.woff') format('woff'),
+url('//at.alicdn.com/t/c/font_3829267_g9vxomx6ua4.ttf') format('truetype');
+}
+iconfont {
+font-family: "iconfont" !important;
+font-size: 16px;
+font-style: normal;
+}
+icon-home:before {
+content: "\e600";
+}
