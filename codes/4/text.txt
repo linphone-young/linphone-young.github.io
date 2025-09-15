@@ -1,0 +1,64 @@
+>QZC44204.1 cytochrome c oxidase subunit I, partial (mitochondrion) [Echinococcus granulosus]
+SHICLSISANFDAFGFYGLLFAMFSIVCLGSSVWGHHMFTVGLDVKTAVFFSSVTMIIGVPTGIKVFTWL
+YMLLNSSVNVSDPVLWWVVSFIVLFTFGGVTGIVLSACV
+
+>QZC44203.1 cytochrome c oxidase subunit I, partial (mitochondrion) [Echinococcus granulosus]
+SHIRLSISANFDAFGFYGLLFAMFSIVCLGSSVWGHHMFTVGLDVKTAVFFSSVTMIIGVPTGIKVFTWL
+YMLLNSSVNVSDPVLWWVVSFIVLFTFGGVTGIVLSACV
+
+>QZC44202.1 cytochrome c oxidase subunit I, partial (mitochondrion) [Echinococcus granulosus]
+SSICLSISANFDAFGFYGLLFAMFSIVCLGSSVWGHHMFTVGLDVKTAVFFSSVTMIIGVPTGIKVFTWL
+YMLLNSSVNVSDPVLWWVVSFIVLFTFGGVTGIVWSACV
+
+>QZC44201.1 cytochrome c oxidase subunit I, partial (mitochondrion) [Echinococcus granulosus]
+SHICLSISANFDAFGFYGLLFAMFSIVCLGSSVWGHHMFTVGLDVKTAVFFSSVTMIIGVPTGIKVFTWL
+YMLLNSSVNVSDPVLWWVVSFIVLFTFGGVTGIVLSACV
+
+>QZC44200.1 cytochrome c oxidase subunit I, partial (mitochondrion) [Echinococcus granulosus]
+SHICLSISANFDAFGFYGLLFAMFSIVCLGSSVWGHHMFTVGLDVKTAVFFSSVTMIIGVPTGIKVFTWL
+YMLLNSSVNVSDPVLWWVVSFIVLFTFGGVTGIFLSACV
+
+[ LIG ]
+    1    2    3     4     5     6     7     8     9    10    11    12    13    14    15    16    17
+
+      VERSION 2023.5        ?        release   ?                                   ??            A?            A尫G                ?€                                                                    P       PROA       CYS       N       NH3       HT1       HC       HT2       HT3       CA       CT1       HA       HB1       CB       CT2       HA2       HB2       SG       S       HG1       HS       C       O       LEU       NH1       HN       H       CG       HG       
+
+TITLE     Average structure
+MODEL        1
+ATOM  13675  C1  LIG D 339      -1.100  -0.534  -0.649  1.00  0.00           C
+ATOM  13676  C2  LIG D 339      -0.570   0.586  -0.360  1.00  0.00           C
+ATOM  13677  C3  LIG D 339       0.562   0.829   0.174  1.00  0.00           C
+ATOM  13678  C4  LIG D 339       0.758   0.470   1.056  1.00  0.00           C
+ATOM  13679  C5  LIG D 339       0.957  -0.557   0.992  1.00  0.00           C
+ATOM  13680  C6  LIG D 339       0.010  -1.375   0.432  1.00  0.00           C
+ATOM  13681  C7  LIG D 339      -0.445  -1.257  -0.522  1.00  0.00           C
+ATOM  13682  C8  LIG D 339      -1.804  -0.626  -1.615  1.00  0.00           C
+
+
+#
+#
+#
+@
+@
+@
+   0.0000000    0.1683624
+   0.1000000    0.2294501
+   0.2000000    0.2370480
+   0.3000000    0.2628419
+   0.4000000    0.3428856
+   0.5000000    0.2849355
+   0.6000000    0.3224417
+   0.7000000    0.2206405
+   0.8000000    0.2383398
+   0.9000000    0.2647314
+   1.0000000    0.2523271
+   1.1000000    0.2782352
+   1.2000000    0.2356643
+   1.3000001    0.2651701
+   1.4000001    0.2469269
+   1.5000001    0.2337120
+   1.6000000    0.2606848
+   1.7000000    0.2608382
+   1.8000001    0.3216629
+   1.9000001    0.2711390
+   2.0000000    0.3250585
