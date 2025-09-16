@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://linphone-young.github.io/img/icon.jpg">
 <meta property="article:published_time" content="2025-07-09T09:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-16T08:18:02.856Z">
+<meta property="article:modified_time" content="2025-09-16T10:24:22.471Z">
 <meta property="article:author" content="YLF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://linphone-young.github.io/img/icon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/basketball.jpg"><link rel="canonical" href="https://linphone-young.github.io/introduction/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -295,10 +295,10 @@ h2 .underline {
 .quote {
     flex: 1;
     font-style: italic;
-    padding: 2rem;
+    padding: 1rem;
     background: rgba(0，0，0, 0.15);
-    border-right: 8px solid var(--accent-color);
-    border-left: 8px solid var(--accent-color);
+    border-right: 1px solid var(--accent-color);
+    border-left: 1px solid var(--accent-color);
     position: relative;
     border-radius: 15px;
     transition: all 0.3s ease;
@@ -315,19 +315,19 @@ h2 .underline {
 }
 .quote::before {
     content: "\201C";
-    font-size: 4rem;
+    font-size: 2rem;
     color: rgba(0，0，0, 0.8);
     position: absolute;
-    top: -1rem;
+    top: 0rem;
     left: 0rem;
     font-family: serif;
 }
 .quote::after {
     content: "\201D";
-    font-size: 4rem;
+    font-size: 2rem;
     color: rgba(0，0，0, 0.8);
     position: absolute;
-    bottom: -3rem;
+    bottom: 0rem;
     right: 0.5rem;
     font-family: serif;
 }
@@ -368,7 +368,7 @@ h2 .underline {
 }
 .section {
     margin-bottom: 2.5rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0rem 2rem 2rem 2rem;
     background: var(--card-bg);
     border-radius: 15px;
     position: relative;
@@ -386,7 +386,7 @@ h2 .underline {
     position: absolute;
     top: 0;
     left: 0;
-    width: 8px;
+    width: 2px;
     height: 100%;
     background: linear-gradient(to bottom, var(--main-color), var(--secondary-color));
 }
@@ -612,8 +612,8 @@ li:hover::before {
 		<p style="font-size: 1.9rem; font-weight: 800; color: var(--accent-color); text-shadow: 0 0 10px rgba(20, 20, 20, 0.5);text-indent: 0em;" >简介</p>
 	</div>
 	<div class="profile">
-		<div class="quote">
-			Life is complex and contains real and imaginary parts. The real part doesn't last, so I focus on the imaginary.
+		<div class="quote" style="text-indent: 2em" >
+Life is complex and contains real and imaginary parts. The real part doesn't last, so I focus on the imaginary.
 		</div>
 		<div class="avatar"></div>
 	</div>
@@ -623,12 +623,17 @@ li:hover::before {
 			<span class="underline"></span>
 		</h2>
 		<p>
-			嗨！我是ikun
+            欢迎来到我的个人博客。我是一名计算机、化学爱好者，但这并不等于计算化学，计算化学是一门专门的学科，仅是二者交叉的一部分。现代化学除了合成部分依靠人力操作，合成前期的筛选、预测、模拟以及合成后的表征测试、数据分析、理论分析，大多都引入了计算机进行辅助，除仪器软件、excel、stata等简单分析数据外，还有如使用各种神经网络模型对大量数据进行预测筛选得到潜在高价值化合物，或者使用生成模型生成所需要的分子；使用MOE、Herimit进行一站式的分子动力学模拟(MD)，预测药物配体-受体的位点、结合能dG、ddG等，也可使用Amber、Gromacs等进行细致的探索；使用机器学习势加速和优化MD；使用Gaussian、ORCA、cp2k、vasp等计算小分子或周期性小分子的稳定/过渡态结构、单点能、跃迁能、各类谱图等。总之，计算机与化学的交融相当之深，其范围之广令人眼花缭乱。</p>
+		<p>
+            本人本科毕业于华中科技大学应用化学专业，因对计算机感兴趣并辅修计算机科学与技术，主要课程为《计算机组成原理》《SQL数据库系统原理》《计算机网络》《计算机系统结构》《数据结构》《数字电路与逻辑设计》《汇编语言程序设计》《软件工程》《算法分析与设计》《操作系统原理》《面向对象程序设计C++》，此外还学习了Linux系统操作并维护组内的6台服务器、学习vim和bash shell脚本等；自学了深度学习，主要为scikit-learn、pytorch、tensorflow等包，LSTM、transformer、Mamba等机器翻译相关的模型。除此之外，还到武汉智化科技公司实习一个月，复现ReactionCode的包迁移复现。
 		</p>
+        <p>
+            现研究生阶段就读于中国药科大学化学系，研究方向为离子通道蛋白的预测。期间自学Gromacs、Gaussian、VMD等软件，并取得一定成果。参考文献暂无。学无止境，平时喜爱阅读书籍，如《量子计算》、《量子化学》等基础教材。
+        </p>
 		<div style="margin-top: 1rem; text-align: center;">
-			<i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i> 某大学化学专业
-			<i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i>中国
-			<i class="fas fa-heart" style="color: var(--accent-color);"></i> 计算机 | 深度学习 | 量子计算 | 分子模拟
+			<i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i> 中国药科大学化学系
+			<i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i>南京,中国
+			<i class="fas fa-heart" style="color: var(--accent-color);"></i> 计算机 | 深度学习 | 分子模拟 | 量子计算 
 		</div>
 	</div>
 	<div class="section">
@@ -638,10 +643,10 @@ li:hover::before {
 		</h2>
 		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
 			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
+				<li><a href="/posts/1.html" style="color: black">基于Hexo搭建个人网页</a></li>
+				<li><a href="/posts/2.html" style="color: black">Git学习——git-bash</a></li>
+				<li><a href="/posts/3.html" style="color: black">各水模型比较</a></li>
+				<li><a href="/posts/4.html" style="color: black">python读取数据文件的各类包</a></li>
 			</ul>
 			<ul>
 				<li>5</li>
@@ -657,11 +662,11 @@ li:hover::before {
 			<span class="underline"></span>
 		</h2>
 		<p style="font-size: 1.2rem; font-weight: 800; color: var(--accent-color); ">
-			交叉学习计算机、物理与化学，特别是量子计算和分子动力学模拟领域。<br>
+			交叉学习计算机、物理与化学，特别是量子化学和分子动力学模拟领域。<br>
 			以下是我正在深入研究的技能方向：
 		</p>
 		<div class="skills">
-			<div class="skill"><i class="fas fa-shield-alt"></i> 量子计算</div>
+			<div class="skill"><i class="fas fa-shield-alt"></i> 量子化学</div>
 			<div class="skill"><i class="fas fa-tools"></i> 分子动力学模拟</div>
 			<div class="skill"><i class="fas fa-network-wired"></i> 神经网络</div>
 			<div class="skill"><i class="fas fa-terminal"></i> Linux</div>
@@ -682,6 +687,10 @@ li:hover::before {
 			<p>Gromacs <span style="float: right;">70%</span></p>
 			<div class="skill-meter">
 				<div class="skill-level" style="width: 70%;"></div>
+			</div>
+            <p>Deep Learning <span style="float: right;">65%</span></p>
+			<div class="skill-meter">
+				<div class="skill-level" style="width: 65%;"></div>
 			</div>
 			<p>Linux <span style="float: right;">65%</span></p>
 			<div class="skill-meter">
@@ -732,13 +741,13 @@ li:hover::before {
 		</h2>
 		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
 			<ul>
-				<li><a target="_blank" rel="noopener" href="https://www.baidu.com" style="color: var(--accent-color); text-decoration: none;">百度</a> - 百度一下，你就知道</li>
-				<li><a target="_blank" rel="noopener" href="https://www.bing.com" style="color: var(--accent-color); text-decoration: none;">必应</a> - 必应一下，你就知道</li>
-				<li><a target="_blank" rel="noopener" href="https://www.google.com" style="color: var(--accent-color); text-decoration: none;">谷歌</a> - 谷歌一下，你就知道</li>
+				<li><a target="_blank" rel="noopener" href="https://jerkwin.github.io/" style="color: var(--accent-color); text-decoration: none;">Jerkwin</a> - 哲科文</li>
+				<li><a target="_blank" rel="noopener" href="https://www.cainiaojc.com/" style="color: var(--accent-color); text-decoration: none;">cainiao</a> - 菜鸟教程</li>
+				<li><a target="_blank" rel="noopener" href="https://www.runoob.com/" style="color: var(--accent-color); text-decoration: none;">runoob</a> - 菜鸟教程</li>
 			</ul>
 			<ul>
-				<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/" style="color: var(--accent-color); text-decoration: none;">哔哩哔哩</a> - 技术视频学习</li>
-				<li><a target="_blank" rel="noopener" href="https://www.pubs.acs.org/" style="color: var(--accent-color); text-decoration: none;">ACS</a> - 美国化学杂志</li>
+				<li><a target="_blank" rel="noopener" href="http://bbs.keinsci.com/forum.php" style="color: var(--accent-color); text-decoration: none;">CCC</a> - 计算化学公社</li>
+				<li><a target="_blank" rel="noopener" href="http://sobereva.com/" style="color: var(--accent-color); text-decoration: none;">sob</a> - 思想家公社</li>
 			</ul>
 		</div>
 	</div>
