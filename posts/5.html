@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MDAnalysis用户手册翻译-1 | 星星点灯</title><meta name="author" content="YLF"><meta name="copyright" content="YLF"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="https:&#x2F;&#x2F;userguide.mdanalysis.org&#x2F;stable&#x2F;examples&#x2F;quickstart.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MDAnalysis用户手册翻译-1">
+<meta property="og:url" content="https://linphone-young.github.io/posts/5.html">
+<meta property="og:site_name" content="星星点灯">
+<meta property="og:description" content="https:&#x2F;&#x2F;userguide.mdanalysis.org&#x2F;stable&#x2F;examples&#x2F;quickstart.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linphone-young.github.io/img/icon.jpg">
+<meta property="article:published_time" content="2025-09-27T07:53:31.000Z">
+<meta property="article:modified_time" content="2025-09-27T13:39:00.864Z">
+<meta property="article:author" content="YLF">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Molecule Dynamics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linphone-young.github.io/img/icon.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MDAnalysis用户手册翻译-1",
+  "url": "https://linphone-young.github.io/posts/5.html",
+  "image": "https://linphone-young.github.io/img/icon.jpg",
+  "datePublished": "2025-09-27T07:53:31.000Z",
+  "dateModified": "2025-09-27T13:39:00.864Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "YLF",
+      "url": "https://linphone-young.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/basketball.jpg"><link rel="canonical" href="https://linphone-young.github.io/posts/5.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MDAnalysis用户手册翻译-1',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/myStyle.css"><script src="/live2d-widget/dist/autoload.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/introduction"><i class="fa-fw fas fa-smile"></i><span> 简介</span></a></div><div class="menus_item"><a class="site-page" href="/projects"><i class="fa-fw fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-list"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/frlink"><i class="fa-fw fas fa-paperclip"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-quote-right"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">星星点灯</span></a><a class="nav-page-title" href="/"><span class="site-name">MDAnalysis用户手册翻译-1</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/introduction"><i class="fa-fw fas fa-smile"></i><span> 简介</span></a></div><div class="menus_item"><a class="site-page" href="/projects"><i class="fa-fw fas fa-folder"></i><span> 项目</span></a></div><div class="menus_item"><a class="site-page" href="/archives"><i class="fa-fw fas fa-list"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/frlink"><i class="fa-fw fas fa-paperclip"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about"><i class="fa-fw fas fa-quote-right"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">MDAnalysis用户手册翻译-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-27T07:53:31.000Z" title="发表于 2025-09-27 15:53:31">2025-09-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-27T13:39:00.864Z" title="更新于 2025-09-27 21:39:00">2025-09-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/MDAnalysis/">MDAnalysis</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>快速入门指南</h1>
+<p>本指南旨在作为 MDAnalysis 的基本介绍，以帮助您入门并运行。您可以在示例notebooks中看到更复杂的任务。本页概述了如何：</p>
+<li>加载分子动力学结构或轨迹</li>
+<li>使用 AtomGroups，这是 MDAnalysis 中的一个中心数据结构</li>
+<li>使用轨迹</li>
+<li>写出坐标</li>
+<li>使用 MDAnalysis 中的分析算法</li>
+<li>纠正和自动引用 MDAnalysis 和算法</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import MDAnalysis as mda</span><br><span class="line">from MDAnalysis.tests.datafiles import PSF, DCD, GRO, XTC</span><br><span class="line"># 注意MDanalysisTests未与MDAnalysis捆绑下载，需另外安装</span><br><span class="line"></span><br><span class="line">import warnings</span><br><span class="line"># suppress some MDAnalysis warnings about PSF files</span><br><span class="line">warnings.filterwarnings(&#x27;ignore&#x27;)</span><br><span class="line"></span><br><span class="line">from matplotlib import pyplot as plt</span><br><span class="line"></span><br><span class="line">print(mda.Universe(PSF, DCD))</span><br><span class="line">print(&quot;Using MDAnalysis version&quot;, mda.__version__)</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<p>正常无报错</p>
+<h1>概述</h1>
+<p>MDAnalysis 是一个 Python 包，它提供了访问和分析分子动力学轨迹中数据的工具。几个关键数据结构构成了 MDAnalysis 的支柱。</p>
+<li>Atom：分子系统由粒子组成，除原子外，Atom对象也可表示粗粒化的珠子</li>
+<li>AtomGroup：Atoms被分组到 AtomGroups 中。这可能是 MDAnalysis 中最重要的类，因为几乎所有内容都可以通过它访问。</li>
+<li>Universe：包含分子系统AtomGroup中可通过.atoms属性访问的的所有粒子，并在.trajectory轨迹中将它们组合</li>
+MDAnalysis 中的一个基本概念是，在任何时候，只访问轨迹的一个时间范围。Universe的trajectory属性通常是文件读取器。将轨迹视为帧索引的函数，该帧索引仅使来自该特定帧的数据可用。此结构很重要，因为它允许 MDAnalysis 处理太大而无法放入计算机内存的轨迹文件。
+MDAnalysis的内部单位是Å和ps。
+<h1>载入结构或者轨迹</h1>
+<p>使用 MDAnalysis 通常首先将数据加载到 MDAnalysis 中的中心数据结构Universe中。<br>
+首要的参数就是拓扑文件和轨迹文件。</p>
+<li>拓扑文件必选参数，接受pdf、pdb、crd、gro格式</li>
+<li>可选参数，接受*任意*数量的轨迹文件，支持dcd、xtc、trr、xyz格式以及单帧的上述格式；未提供实参则仅载入拓扑文件的结构</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">psf = mda.Universe(PSF)</span><br><span class="line">print(psf)</span><br><span class="line">print(hasattr(psf, &#x27;trajectory&#x27;))</span><br><span class="line">#&lt;Universe with 3341 atoms&gt;</span><br><span class="line">#False</span><br></pre></td></tr></table></figure>
+<p>psf文件不含坐标信息，所以没有trajectory属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gro = mda.Universe(GRO)</span><br><span class="line">print(gro)</span><br><span class="line">print(len(gro.trajectory))</span><br><span class="line">#&lt;Universe with 47681 atoms&gt;</span><br><span class="line">#1</span><br></pre></td></tr></table></figure>
+<p>gro文件含坐标信息，所以有trajectory属性，且长度为1，即单帧<br>
+以下读取测试文件、创建一条轨迹用于后续分析。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">u = mda.Universe(PSF, DCD)</span><br><span class="line">print(u)</span><br><span class="line">print(len(u.trajectory))</span><br><span class="line">#&lt;Universe with 3341 atoms&gt;</span><br><span class="line">#98</span><br></pre></td></tr></table></figure>
+<h1>使用原子组</h1>
+<p>大多数分析都需要创建并操作一个“AtomGroup”，即一组Atom的集合。为了方便起见，您还可以处理具有化学意义的原子组，例如“Residue”或“Segment”。这些组都有与之对应的容器，如“ResidueGroup”和“SegmentGroup”。例如，一个“Universe”对象的“.residues”属性会返回一个“ResidueGroup”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.residues)</span><br><span class="line">#&lt;ResidueGroup [&lt;Residue MET, 1&gt;, &lt;Residue ARG, 2&gt;, &lt;Residue ILE, 3&gt;, ..., &lt;Residue ILE, 212&gt;, &lt;Residue LEU, 213&gt;, &lt;Residue GLY, 214&gt;]&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="选择原子">选择原子</h2>
+<p>获取Universe的原子的最简单方式是使用.atoms属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.atoms)</span><br><span class="line">#&lt;AtomGroup [&lt;Atom 1: N of type 56 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 2: HT1 of type 2 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 3: HT2 of type 2 of resname MET, resid 1 and segid 4AKE&gt;, ..., &lt;Atom 3339: C of type 32 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3340: OT1 of type 72 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3341: OT2 of type 72 of resname GLY, resid 214 and segid 4AKE&gt;]&gt;</span><br></pre></td></tr></table></figure>
+<p>返回一个AtomGroup，相当于Atom的list。大多数分析都涉及使用AtomGroup的atoms。AtomGroup也可通过另一个AtomGroup切片创建，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.atoms[-5:])</span><br><span class="line">#&lt;AtomGroup [&lt;Atom 3337: HA1 of type 6 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3338: HA2 of type 6 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3339: C of type 32 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3340: OT1 of type 72 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 3341: OT2 of type 72 of resname GLY, resid 214 and segid 4AKE&gt;]&gt;</span><br></pre></td></tr></table></figure>
+<p>也可通过索引进行创建</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.atoms[[0, 3, -1, 1, 3, 0]])</span><br><span class="line"># &lt;AtomGroup [&lt;Atom 1: N of type 56 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 4: HT3 of type 2 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 3341: OT2 of type 72 of resname GLY, resid 214 and segid 4AKE&gt;, &lt;Atom 2: HT1 of type 2 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 4: HT3 of type 2 of resname MET, resid 1 and segid 4AKE&gt;, &lt;Atom 1: N of type 56 of resname MET, resid 1 and segid 4AKE&gt;]&gt;</span><br></pre></td></tr></table></figure>
+<p>也可通过类似于现有VMD、PyMol等软件包的原子选择语句.select_atoms()方法进行选择</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.select_atoms(&#x27;resname ASP or resname GLU&#x27;))</span><br><span class="line">#&lt;AtomGroup [&lt;Atom 318: N of type 54 of resname GLU, resid 22 and segid 4AKE&gt;, &lt;Atom 319: HN of type 1 of resname GLU, resid 22 and segid 4AKE&gt;, &lt;Atom 320: CA of type 22 of resname GLU, resid 22 and segid 4AKE&gt;, ..., &lt;Atom 3271: OE2 of type 72 of resname GLU, resid 210 and segid 4AKE&gt;, &lt;Atom 3272: C of type 20 of resname GLU, resid 210 and segid 4AKE&gt;, &lt;Atom 3273: O of type 70 of resname GLU, resid 210 and segid 4AKE&gt;]&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：原子选择语句中的数值范围是闭区间，包括’-‘和’:'，不同于list切片的左闭右开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(u.select_atoms(&#x27;resid 50-100&#x27;).n_residues)</span><br><span class="line">print(u.residues[50:100].n_residues)</span><br><span class="line">#51</span><br><span class="line">#50</span><br></pre></td></tr></table></figure>
+<p>select_atoms支持布尔运算、通配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u.select_atoms(&quot;(resname GLU or resname HS*) and name CA and (resid 1:100)&quot;)</span><br><span class="line">#&lt;AtomGroup with 6 atoms&gt;</span><br></pre></td></tr></table></figure>
+<p>注意，选择创建的AtomGroup被排序和去重，而这可能不同于切片产生的AtomGroup<br>
+详见AtomGroup篇</p>
+<h2 id="从AtomGroup提取原子信息">从AtomGroup提取原子信息</h2>
+<p>AtomGroup对象包含许多属性，这些属性可以方便地提取原子信息。这些属性包括：names、masses、residues、segements、resnames等，详细属性见topology_system篇</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">print(list(zip(u.atoms[:20].names, u.atoms[:20].masses)))</span><br><span class="line"># [(&#x27;N&#x27;, 14.007), (&#x27;HT1&#x27;, 1.008), (&#x27;HT2&#x27;, 1.008), (&#x27;HT3&#x27;, 1.008), (&#x27;CA&#x27;, 12.011), (&#x27;HA&#x27;, 1.008), (&#x27;CB&#x27;, 12.011), (&#x27;HB1&#x27;, 1.008), (&#x27;HB2&#x27;, 1.008), (&#x27;CG&#x27;, 12.011), (&#x27;HG1&#x27;, 1.008), (&#x27;HG2&#x27;, 1.008), (&#x27;SD&#x27;, 32.06), (&#x27;CE&#x27;, 12.011), (&#x27;HE1&#x27;, 1.008), (&#x27;HE2&#x27;, 1.008), (&#x27;HE3&#x27;, 1.008), (&#x27;C&#x27;, 12.011), (&#x27;O&#x27;, 15.999), (&#x27;N&#x27;, 14.007)]</span><br><span class="line"></span><br><span class="line">print(u.atoms[:20].residues)</span><br><span class="line">print(u.atoms[-20:].segments)</span><br><span class="line"># &lt;ResidueGroup [&lt;Residue MET, 1&gt;, &lt;Residue ARG, 2&gt;]&gt;</span><br><span class="line"># &lt;SegmentGroup [&lt;Segment 4AKE&gt;]&gt;</span><br><span class="line"></span><br><span class="line">print(u.atoms[:20].resnames)</span><br><span class="line"># [&#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;MET&#x27;, &#x27;ARG&#x27;]</span><br><span class="line"># 注意.residues去重了，而resname没有</span><br></pre></td></tr></table></figure>
+<p>通过拓扑属性分组原子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">near_met = u.select_atoms(&#x27;not resname MET and (around 2 resname MET)&#x27;)</span><br><span class="line">sorted(near_met.groupby([&#x27;resnames&#x27;, &#x27;names&#x27;]))</span><br><span class="line">#[(&#x27;ALA&#x27;, &#x27;C&#x27;),</span><br><span class="line"> (&#x27;ALA&#x27;, &#x27;HN&#x27;),</span><br><span class="line"> (&#x27;ARG&#x27;, &#x27;N&#x27;),</span><br><span class="line"> (&#x27;ASN&#x27;, &#x27;O&#x27;),</span><br><span class="line"> (&#x27;ASP&#x27;, &#x27;C&#x27;),</span><br><span class="line"> (&#x27;ASP&#x27;, &#x27;N&#x27;),</span><br><span class="line"> (&#x27;GLN&#x27;, &#x27;C&#x27;),</span><br><span class="line"> (&#x27;GLU&#x27;, &#x27;N&#x27;),</span><br><span class="line"> (&#x27;ILE&#x27;, &#x27;C&#x27;),</span><br><span class="line"> (&#x27;LEU&#x27;, &#x27;N&#x27;),</span><br><span class="line"> (&#x27;LYS&#x27;, &#x27;N&#x27;),</span><br><span class="line"> (&#x27;THR&#x27;, &#x27;N&#x27;)]</span><br></pre></td></tr></table></figure>
+<h2 id="AtomGroup位置和方法">AtomGroup位置和方法</h2>
+<p>.position属性可能是AtomGroup中最有用的属性之一。它返回一个形状为(n_atoms, 3)的NumPy数组，其中n_atoms是AtomGroup中的原子数，3是每个原子的x、y、z坐标。该属性是只读的，但您可以使用它来计算原子组的位置，例如质心</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ca = u.select_atoms(&#x27;resid 1-5 and name CA&#x27;)</span><br><span class="line">print(ca.positions)</span><br><span class="line">print(ca.positions.shape)</span><br><span class="line"># [[11.664622    8.393473   -8.983231  ]</span><br><span class="line">#  [11.414839    5.4344215  -6.5134845 ]</span><br><span class="line">#  [ 8.959755    5.612923   -3.6132305 ]</span><br><span class="line">#  [ 8.290068    3.075991   -0.79665166]</span><br><span class="line">#  [ 5.011126    3.7638984   1.130355  ]]</span><br><span class="line"># (5, 3)</span><br></pre></td></tr></table></figure>
+<p>AtomGroup对象还包含许多方法，这些方法可以方便地计算原子组的位置和运动。这些方法包括：<br>
+center_of_mass()：质心<br>
+center_of_geometry()：重心<br>
+total_mass()：总质量<br>
+total_charge()：净电荷<br>
+radius_of_gyration()：回转半径<br>
+bsphere()：重心和边界半径</p>
+<p>MDAnalysis也可以创建键、键角、二面角、离面弯曲角(improper)，但要满足一定条件，如原子数量，这是很自然的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nhh = u.atoms[:3]</span><br><span class="line">print(nhh.names)</span><br><span class="line"># [&#x27;N&#x27;, &#x27;HT1&#x27;, &#x27;HT2&#x27;]</span><br></pre></td></tr></table></figure>
+<p>对于角度部分，输入原子的顺序非常关键。二面角是输入原子的∠123，2是顶点原子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angle_nhh = nhh.angle</span><br><span class="line">print(f&quot;N-H-H angle: &#123;angle_nhh.value():.2f&#125;&quot;)</span><br><span class="line"># N-H-H angle: 37.99</span><br><span class="line">hnh = u.atoms[[1, 0, 2]]</span><br><span class="line">angle_hnh = hnh.angle</span><br><span class="line">print(f&quot;H-N-H angle: &#123;angle_hnh.value():.2f&#125;&quot;)</span><br><span class="line"># H-N-H angle: 106.20</span><br></pre></td></tr></table></figure>
+<h1>使用轨迹</h1>
+<p>Universe的trajectory包含坐标变化信息。轨迹的长度就是帧数，即len(u.trajectory)</p>
+<p>获取轨迹每帧的信息的标准方式就是迭代它。当时刻变化时universe仅包含当前时间步的相关信息。<br>
+*此处timestep被替代为“时刻”，timestep通常为MD的时间步长、时间间隔参数，如1fs，本文timestep应该表达时刻，如第10帧、第10ps</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">for ts in u.trajectory[:20]:</span><br><span class="line">    time = u.trajectory.time</span><br><span class="line">    rgyr = u.atoms.radius_of_gyration()</span><br><span class="line">    print(f&quot;Frame: &#123;ts.frame:3d&#125;, Time: &#123;time:4.0f&#125; ps, Rgyr: &#123;rgyr:.4f&#125; A&quot;)</span><br><span class="line"># Frame:   0, Time:    1 ps, Rgyr: 16.6690 A</span><br><span class="line"># Frame:   1, Time:    2 ps, Rgyr: 16.6732 A</span><br><span class="line"># Frame:   2, Time:    3 ps, Rgyr: 16.7315 A</span><br><span class="line"># Frame:   3, Time:    4 ps, Rgyr: 16.7223 A</span><br><span class="line"># Frame:   4, Time:    5 ps, Rgyr: 16.7440 A</span><br><span class="line"># Frame:   5, Time:    6 ps, Rgyr: 16.7185 A</span><br><span class="line"># Frame:   6, Time:    7 ps, Rgyr: 16.7741 A</span><br><span class="line"># Frame:   7, Time:    8 ps, Rgyr: 16.7764 A</span><br><span class="line"># Frame:   8, Time:    9 ps, Rgyr: 16.7894 A</span><br><span class="line"># Frame:   9, Time:   10 ps, Rgyr: 16.8289 A</span><br><span class="line"># Frame:  10, Time:   11 ps, Rgyr: 16.8521 A</span><br><span class="line"># Frame:  11, Time:   12 ps, Rgyr: 16.8549 A</span><br><span class="line"># Frame:  12, Time:   13 ps, Rgyr: 16.8723 A</span><br><span class="line"># Frame:  13, Time:   14 ps, Rgyr: 16.9108 A</span><br><span class="line"># Frame:  14, Time:   15 ps, Rgyr: 16.9494 A</span><br><span class="line"># Frame:  15, Time:   16 ps, Rgyr: 16.9810 A</span><br><span class="line"># Frame:  16, Time:   17 ps, Rgyr: 17.0033 A</span><br><span class="line"># Frame:  17, Time:   18 ps, Rgyr: 17.0196 A</span><br><span class="line"># Frame:  18, Time:   19 ps, Rgyr: 17.0784 A</span><br><span class="line"># Frame:  19, Time:   20 ps, Rgyr: 17.1265 A</span><br></pre></td></tr></table></figure>
+<p>迭代完后，轨迹的指针重新定位到第一帧，详见trajectories篇。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(u.trajectory.frame)</span><br><span class="line"># 0</span><br></pre></td></tr></table></figure>
+<p>除了迭代之后，也可通过帧索引获取结构，如u.trajectory[10]，或手动迭代，u.trajectory.next()<br>
+通常，轨迹分析首先在列表中收集逐帧数据。<br>
+然后可以将其转换为其他数据结构，例如 numpy 数组或 pandas DataFrame。它可以绘制（如下所示），或用于进一步分析。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rgyr = []</span><br><span class="line">time = []</span><br><span class="line">protein = u.select_atoms(&quot;protein&quot;)</span><br><span class="line">for ts in u.trajectory:</span><br><span class="line">    time.append(u.trajectory.time)</span><br><span class="line">    rgyr.append(protein.radius_of_gyration())</span><br><span class="line">    </span><br><span class="line">import pandas as pd</span><br><span class="line">rgyr_df = pd.DataFrame(rgyr, columns=[&#x27;Radius of gyration (A)&#x27;], index=time)</span><br><span class="line">rgyr_df.index.name = &#x27;Time (ps)&#x27;</span><br><span class="line"></span><br><span class="line">rgyr_df.head()</span><br><span class="line"></span><br><span class="line">rgyr_df.plot(title=&#x27;Radius of gyration&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h1>动态选择</h1>
+<p>选择通常是在静态属性上定义的，这些属性在穿过轨迹时不会改变。但是一些选择包含依赖距离的查询，如around、point等，详见selection篇。这种情况下，可以通过设置“updating=True”使用动态选择对选择按时更新，这时select_atoms返回的是UpdatingAtomGroup而不是AtomGroup。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dynamic = u.select_atoms(&#x27;around 2 resname ALA&#x27;, updating=True)</span><br><span class="line">print(type(dynamic))</span><br><span class="line">dynamic</span><br><span class="line"># &lt;class &#x27;MDAnalysis.core.groups.UpdatingAtomGroup&#x27;&gt;</span><br><span class="line"># &lt;AtomGroup with 54 atoms, with selection &#x27;around 2 resname ALA&#x27; on the entire Universe.&gt;</span><br><span class="line">static = u.select_atoms(&#x27;around 2 resname ALA&#x27;)</span><br><span class="line">print(type(static))</span><br><span class="line">static</span><br><span class="line"># &lt;class &#x27;MDAnalysis.core.groups.AtomGroup&#x27;&gt;</span><br><span class="line"># &lt;AtomGroup with 54 atoms&gt;</span><br><span class="line"></span><br><span class="line">#当调用universe的下一帧时，动态选择的原子会被更新，而静态选择的原子保持不变。</span><br><span class="line">u.trajectory.next()</span><br><span class="line">dynamic,static</span><br><span class="line"># (&lt;AtomGroup with 56 atoms, with selection &#x27;around 2 resname ALA&#x27; on the entire Universe.&gt;,</span><br><span class="line"> &lt;AtomGroup with 54 atoms&gt;)</span><br></pre></td></tr></table></figure>
+<h1>写出坐标</h1>
+<p>MDAnalysis 支持将数据写入一系列文件格式，包括单帧格式（例如 PDB、GRO）和轨迹写入器（例如 XTC、DCD 和多帧 PDB 文件）。（您还可以将选择写入其他程序，例如 VMD 宏，详见selection_exporters篇。)用户指南有一个完整的列表 格式，每个格式都有自己的参考页面。</p>
+<h2 id="单帧">单帧</h2>
+<p>写入只能容纳单个帧的文件的最直接方法是使用任意AtomGroup的 write 的方法。MDAnalysis 使用文件扩展名来确定输出文件格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ca = u.select_atoms(&#x27;name CA&#x27;)</span><br><span class="line">ca.write(&#x27;ca.gro&#x27;)</span><br></pre></td></tr></table></figure>
+<h2 id="轨迹">轨迹</h2>
+<p>写出轨迹的标准方式是：</p>
+<ol>
+<li>打开轨迹Writer，识别每帧将包含的原子数；</li>
+<li>遍历轨迹，使用Wrier.write()将每帧写入Writer；</li>
+<li>关闭Writer。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ca = u.select_atoms(&#x27;name CA&#x27;)</span><br><span class="line">with mda.Writer(&#x27;calphas.xtc&#x27;, ca.n_atoms) as w:</span><br><span class="line">    for ts in u.trajectory:</span><br><span class="line">        w.write(ca)</span><br></pre></td></tr></table></figure>
+<h1>分析</h1>
+<p>MDAnalysis 附带了一组不同的分析模块，以及用于实现您自己的构建块，详见analysis篇。<br>
+其中大多数遵循一个通用接口：</p>
+<ol>
+<li>使用Universe和相关的参数初始化分析；</li>
+<li>使用.run()运行分析。可选参数有起始帧索引、结束帧索引、步长、toggling verbose。默认分析整条轨迹。</li>
+<li>分析结果存储在Analysis对象中</li>
+<li>另外，函数可用于分析单帧<br>
+但是，不是所有分析都使用这个模型。检查每个分析的文档是很重要的。分析详见examples篇。</li>
+</ol>
+<h2 id="RMSD">RMSD</h2>
+<p>不是所有的子模块都使用“import MDAnalysis”导入。大多数模块都必须显示导入，如“from MDAnalysis.analysis import rms”<br>
+MDAnalysis 提供了一个函数rmsd()，用于计算两个 numpy 坐标数组之间的 RMSD。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bb = u.select_atoms(&#x27;backbone&#x27;)</span><br><span class="line"></span><br><span class="line">u.trajectory[0] # first frame</span><br><span class="line">first = bb.positions</span><br><span class="line"></span><br><span class="line">u.trajectory[-1] #last frame</span><br><span class="line">last = bb.positions</span><br><span class="line"></span><br><span class="line">rms.rmsd(first, last)</span><br><span class="line"># 6.852774844656239</span><br></pre></td></tr></table></figure>
+<p>类RMSD也提供了对轨迹的操作。</p>
+<ol>
+<li>第一个参数是用于RMSD计算的AtomGroup/Universe</li>
+<li>第二个参数是参考结构，可以是AtomGroup或Universe，默认为None，即使用第一个参数的当前帧作为参考结构</li>
+<li>我们选择将轨迹对齐到骨架原子，然后计算select的骨架原子的RMSD。</li>
+<li>然后，不用重新对齐轨迹，计算groupselections的RMSD。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">u.trajectory[0] # set to first frame</span><br><span class="line">rmsd_analysis = rms.RMSD(u, select=&#x27;backbone&#x27;, groupselections=[&#x27;name CA&#x27;, &#x27;protein&#x27;])</span><br><span class="line">rmsd_analysis.run()</span><br><span class="line"># &lt;MDAnalysis.analysis.rms.RMSD at 0x18ee5c2d820&gt;</span><br></pre></td></tr></table></figure>
+<p>结果被保存在属性中，即rmsd_analysis.results.rmsd，为shape为(n_frames, 3+len(groupselections))的numpy.ndarray，其中各列分别是</p>
+<ol>
+<li>帧数</li>
+<li>时间(ps)</li>
+<li>RMSD(backbone)</li>
+<li>RMSD(CA)</li>
+<li>RMSD(protein)<br>
+我们可以将结果转换为DataFrame，并绘制出来。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">rmsd_df = pd.DataFrame(rmsd_analysis.results.rmsd[:, 2:],</span><br><span class="line">                       columns=[&#x27;Backbone&#x27;, &#x27;C-alphas&#x27;, &#x27;Protein&#x27;],</span><br><span class="line">                       index=rmsd_analysis.results.rmsd[:, 1])</span><br><span class="line">rmsd_df.index.name = &#x27;Time (ps)&#x27;</span><br><span class="line">rmsd_df.head()</span><br><span class="line"></span><br><span class="line">rmsd_df.plot(title=&#x27;RMSD&#x27;)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>参考文献</h1>
+<p>在发表工作中使用MDAnalysis应当引用下列文献：</p>
+<li>Michaud-Agrawal, E. J. Denning, T. B. Woolf, and O. Beckstein. MDAnalysis: A Toolkit for the Analysis of Molecular Dynamics Simulations. J. Comput. Chem. 32 (2011), 2319–2327. doi:10.1002/jcc.21787</li>
+<li>R. J. Gowers, M. Linke, J. Barnoud, T. J. E. Reddy, M. N. Melo, S. L. Seyler, D. L. Dotson, J. Domanski, S. Buchoux, I. M. Kenney, and O. Beckstein. MDAnalysis: A Python package for the rapid analysis of molecular dynamics simulations. In S. Benthall and S. Rostrup, editors, Proceedings of the 15th Python in Science Conference, pages 98-105, Austin, TX, 2016. SciPy. doi:10.25080/Majora-629e541a-00e</li>
+MDAnalysis包含许多应该单独引用的算法和模块,如MDAnalysis.analysis.rmsMDAnalysis.analysis.align需引用：
+<li>Douglas L. Theobald. Rapid calculation of RMSD using a quaternion-based characteristic polynomial. Acta Crystallographica A 61 (2005), 478-480.</li>
+<li>Pu Liu, Dmitris K. Agrafiotis, and Douglas L. Theobald. Fast determination of the optimal rotational matrix for macromolecular superpositions. J. Comput. Chem. 31 (2010), 1561–1563.</li>
+每个模块的主要来源将会保存在他们的文档中。
+可以使用duecredit自动生成引用，详见references篇。
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linphone-young.github.io">YLF</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linphone-young.github.io/posts/5.html">https://linphone-young.github.io/posts/5.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://linphone-young.github.io" target="_blank">星星点灯</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Molecule-Dynamics/">Molecule Dynamics</a></div><div class="post-share"><div class="social-share" data-image="/img/icon.jpg" data-sites="facebook,twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>感谢打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/4.html" title="python读取数据文件的各类包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">python读取数据文件的各类包</div></div><div class="info-2"><div class="info-item-1">简要记录了读取数据文件的各类包。</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/4.html" title="python读取数据文件的各类包"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-10</div><div class="info-item-2">python读取数据文件的各类包</div></div><div class="info-2"><div class="info-item-1">简要记录了读取数据文件的各类包。</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">YLF</div><div class="author-info-description">Linphone Young's Blog</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/linphone-young/"><i class="fab fa-github"></i><span>Github主页</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">快速入门指南</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">载入结构或者轨迹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">使用原子组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%8E%9F%E5%AD%90"><span class="toc-number">4.1.</span> <span class="toc-text">选择原子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8EAtomGroup%E6%8F%90%E5%8F%96%E5%8E%9F%E5%AD%90%E4%BF%A1%E6%81%AF"><span class="toc-number">4.2.</span> <span class="toc-text">从AtomGroup提取原子信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AtomGroup%E4%BD%8D%E7%BD%AE%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">4.3.</span> <span class="toc-text">AtomGroup位置和方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">使用轨迹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">动态选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">写出坐标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%B8%A7"><span class="toc-number">7.1.</span> <span class="toc-text">单帧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%A8%E8%BF%B9"><span class="toc-number">7.2.</span> <span class="toc-text">轨迹</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RMSD"><span class="toc-number">8.1.</span> <span class="toc-text">RMSD</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5.html" title="MDAnalysis用户手册翻译-1">MDAnalysis用户手册翻译-1</a><time datetime="2025-09-27T07:53:31.000Z" title="发表于 2025-09-27 15:53:31">2025-09-27</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By YLF</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (false) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><canvas id="star-canvas"></canvas><script src="/js/star-canvas.js"></script><script id="canvas_nest" defer="defer" color="150,120,190" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
