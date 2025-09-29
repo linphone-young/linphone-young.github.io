@@ -111,3 +111,5 @@ font-style: normal;
 icon-home:before {
 content: "\e600";
 }
+
+#article-container > p {text-indent: 2em}
