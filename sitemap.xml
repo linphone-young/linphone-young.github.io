@@ -11,9 +11,36 @@
   </url>
   
   <url>
-    <loc>https://linphone-young.github.io/posts/63534.html</loc>
+    <loc>https://linphone-young.github.io/posts/8.html</loc>
     
-    <lastmod>2025-09-29</lastmod>
+    <lastmod>2025-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://linphone-young.github.io/posts/7.html</loc>
+    
+    <lastmod>2025-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://linphone-young.github.io/posts/6.html</loc>
+    
+    <lastmod>2025-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://linphone-young.github.io/posts/5.html</loc>
+    
+    <lastmod>2025-09-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -38,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://linphone-young.github.io/posts/8.html</loc>
-    
-    <lastmod>2025-09-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://linphone-young.github.io/frlink/index.html</loc>
     
     <lastmod>2025-09-29</lastmod>
@@ -59,33 +77,6 @@
     <loc>https://linphone-young.github.io/posts/3.html</loc>
     
     <lastmod>2025-09-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://linphone-young.github.io/posts/7.html</loc>
-    
-    <lastmod>2025-09-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://linphone-young.github.io/posts/6.html</loc>
-    
-    <lastmod>2025-09-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://linphone-young.github.io/posts/5.html</loc>
-    
-    <lastmod>2025-09-28</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
