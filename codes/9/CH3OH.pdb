@@ -13,10 +13,98 @@ CONECT    4    3
 CONECT    5    3
 CONECT    6    3
 
-Using the group selection keyword for
-Preexisting selections and modifiers, one can
-make updating selections depend on
-AtomGroup, or even other
-UpdatingAtomGroup, instances.
-Likewise, making an updating selection from an already updating group will
-cause later updates to also reflect the updating of the base group:
+An on-the-fly transformation is a function that silently modifies the dynamic data contained in a trajectory Timestep (typically coordinates) as it is loaded into memory. It is called for each current time step to transform data into your desired representation. A transformation function must also return the current Timestep, as transformations are often chained together.
+The MDAnalysis.transformations module contains a collection of transformations. For example, fit_rot_trans() can perform a mass-weighted alignment on an AtomGroup to a reference.
+In [1]: import MDAnalysis as mda
+In [2]: from MDAnalysis.tests.datafiles import TPR, XTC
+In [3]: from MDAnalysis import transformations as trans
+In [4]: u = mda.Universe(TPR, XTC)
+In [5]: protein = u.select_atoms(&#39;protein&#39;)
+In [6]: align_transform = trans.fit_rot_trans(protein, protein, weights=protein.masses)
+In [7]: u.trajectory.add_transformations(align_transform)
+
+
+Other implemented transformations include functions to translate, rotate, fit an AtomGroup to a reference, and wrap or unwrap groups in the unit cell. (Please see the MDAnalysis on-the-fly transformations blog post contains a more complete introduction to these fitting and wrapping functions.)
+Although you can only call add_transformations() once, you can pass in multiple transformations in a list, which will be executed in order.
+There is a transformations tutorial that shows in more detail how to use transformations. A few simple examples are given below.
+
+Example workflows
+The workflow below
+
+makes all molecules whole (unwraps them over periodic boundary conditions),
+centers the protein in the center of the box,
+wraps water back into the box.
+
+# create new Universe for new transformations
+In [8]: u = mda.Universe(TPR, XTC)
+
+In [9]: protein = u.select_atoms(&#39;protein&#39;)
+
+In [10]: water = u.select_atoms(&#39;resname SOL&#39;)
+
+In [11]: workflow = [trans.unwrap(u.atoms),
+   ....:             trans.center_in_box(protein, center=&#39;geometry&#39;),
+   ....:             trans.wrap(water, compound=&#39;residues&#39;)]
+   ....: 
+
+In [12]: u.trajectory.add_transformations(*workflow)
+
+
+Please see the full tutorial for more information.
+If your transformation does not depend on something within the Universe (e.g. a chosen AtomGroup), you can also create a Universe directly with transformations. The code below translates coordinates 1 angstrom up on the z-axis:
+In [13]: u = mda.Universe(TPR, XTC, transformations=[trans.translate([0, 0, 1])])
+
+
+If you need a different transformation, it is easy to implement your own.
+
+
+Custom transformations
+At its core, a transformation function must only take a Timestep as its input and return the Timestep as the output.
+In [14]: import numpy as np
+
+In [15]: def up_by_2(ts):
+   ....:     &quot;&quot;&quot;Translates atoms up by 2 angstrom&quot;&quot;&quot;
+   ....:     ts.positions += np.array([0.0, 0.0, 0.2])
+   ....:     return ts
+   ....: 
+
+In [16]: u = mda.Universe(TPR, XTC, transformations=[up_by_2])
+
+
+If your transformation needs other arguments, you will need to wrap your core transformation with a wrapper function that can accept the other arguments.
+In [17]: def up_by_x(x):
+   ....:     &quot;&quot;&quot;Translates atoms up by x angstrom&quot;&quot;&quot;
+   ....:     def wrapped(ts):
+   ....:         &quot;&quot;&quot;Handles the actual Timestep&quot;&quot;&quot;
+   ....:         ts.positions += np.array([0.0, 0.0, float(x)])
+   ....:         return ts
+   ....:     return wrapped
+   ....: 
+
+# load Universe with transformations that move it up by 7 angstrom
+In [18]: u = mda.Universe(TPR, XTC, transformations=[up_by_x(5), up_by_x(2)])
+
+
+Alternatively, you can use functools.partial() to substitute the other arguments.
+In [19]: import functools
+
+In [20]: def up_by_x(ts, x):
+   ....:     ts.positions += np.array([0.0, 0.0, float(x)])
+   ....:     return ts
+   ....: 
+
+In [21]: up_by_5 = functools.partial(up_by_x, x=5)
+
+In [22]: u = mda.Universe(TPR, XTC, transformations=[up_by_5])
+
+
+On-the-fly transformation functions can be applied to any property of a Timestep, not just the atom positions. For example, to give each frame of a trajectory a box:
+In [23]: def set_box(ts):
+   ....:     ts.dimensions = [10, 20, 30, 90, 90, 90]
+   ....:     return ts
+   ....: 
+
+In [24]: u = mda.Universe(TPR, XTC, transformations=[set_box])
+
+
+
