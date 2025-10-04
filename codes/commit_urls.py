@@ -8,7 +8,7 @@ urls = []
 for d in ['about','archives','categories','frlink','introduction','posts','tags']:
     for root, dirs, files in os.walk(os.path.join(r'..\..\public',d)):
         for file in files:
-            if file.endswith('.html'):
+            if file.endswith('.html') and 'posts' in root:
                 urls.append(os.path.join('https://linphone-young.github.io/', root[13:], file).replace('\\','/'))
 
 print("本次提交的urls:", urls)
