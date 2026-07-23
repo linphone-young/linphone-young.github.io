@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://linphone-young.github.io/posts/31.html</loc>
+    
+    <lastmod>2026-07-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://linphone-young.github.io/posts/30.html</loc>
     
     <lastmod>2025-10-05</lastmod>
@@ -415,6 +424,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://linphone-young.github.io/tags/Molecular-Interaction/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -468,6 +484,13 @@
   
   <url>
     <loc>https://linphone-young.github.io/categories/Quantum-Chemistry/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://linphone-young.github.io/categories/Chemistry/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
