@@ -411,6 +411,13 @@
   </url>
   
   <url>
+    <loc>https://linphone-young.github.io/tags/git/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://linphone-young.github.io/tags/Hexo/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -419,13 +426,6 @@
   
   <url>
     <loc>https://linphone-young.github.io/tags/butterfly/</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://linphone-young.github.io/tags/git/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -462,7 +462,7 @@
   </url>
   
   <url>
-    <loc>https://linphone-young.github.io/categories/Hexo/</loc>
+    <loc>https://linphone-young.github.io/categories/git/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -476,7 +476,7 @@
   </url>
   
   <url>
-    <loc>https://linphone-young.github.io/categories/git/</loc>
+    <loc>https://linphone-young.github.io/categories/Hexo/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
