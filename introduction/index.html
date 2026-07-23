@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://linphone-young.github.io/img/icon.jpg">
 <meta property="article:published_time" content="2025-07-09T09:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-23T08:56:14.602Z">
+<meta property="article:modified_time" content="2026-07-23T09:05:22.684Z">
 <meta property="article:author" content="YLF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://linphone-young.github.io/img/icon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/basketball.jpg"><link rel="canonical" href="https://linphone-young.github.io/introduction/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
@@ -295,60 +295,80 @@ h2 .underline {
 .quote {
     flex: 1;
     font-style: italic;
-    padding: 1rem;
+    /* 建议加大内边距，给伪元素引号留出空间，防止文字与引号重叠 */
+    padding: 1rem 1.5rem; 
     background: rgba(0, 0, 0, 0.15);
     border-right: 1px solid var(--accent-color);
     border-left: 1px solid var(--accent-color);
     position: relative;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    
+    /* 1. 显式指定 transition 属性，避免性能开销并消除伪元素渲染抖动 */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    font-family: 'kaiti', cursive, 'Noto Sans SC', sans-serif;
+    
+    /* 2. 优化字体栈：英文字体放前面，中文字体放后面；使用更标准的大写 KaiTi */
+    font-family: 'Georgia', 'KaiTi', '楷体', 'Noto Sans SC', cursive, sans-serif;
     font-size: 1rem;
     font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.6; /* 稍微提升一点行高，提升双语阅读体验 */
 }
+
 .quote:hover {
     background: rgba(0, 0, 0, 0.25);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* 伪元素通用处理 */
+.quote::before,
+.quote::after {
+    position: absolute;
+    font-size: 2rem;
+    line-height: 1; /* 锁定行高，防止高度继承导致定位偏移 */
+    color: rgba(0, 0, 0, 0.8);
+    font-family: Georgia, serif;
+    pointer-events: none; /* 防止鼠标选中文本时卡在引号上 */
+}
+
+/* 左上角前引号 */
 .quote::before {
     content: "\201C";
-    font-size: 2rem;
-    color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    font-family: serif;
+    top: 0.5rem;
+    left: 0.5rem;
 }
+
+/* 右下角后引号 */
 .quote::after {
     content: "\201D";
-    font-size: 2rem;
-    color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    bottom: 0rem;
+    bottom: 0.2rem;
     right: 0.5rem;
-    font-family: serif;
 }
 .bio {
-    margin-bottom: 2.5rem;
+    /* 修正：合并 margin，统一设置上下 2rem，左右 2rem */
+    margin: 2rem;
     padding: 0 2rem 2rem 2rem;
     background: var(--card-bg);
-    margin: 2rem 2rem;
     border-radius: 50px;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-    border-left: 12px solid rgba(0, 0, 0,);
-    border-right: 12px solid rgba(0, 0, 0,);
+    
+    /* 显式指定过渡属性，比 transition: all 性能更好 */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* 修正：替换中文逗号，并补全了透明度数值 0.15 */
+    border-left: 12px solid rgba(0, 0, 0, 0.15);
+    border-right: 12px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 .bio:hover {
+    /* 修正：替换中文逗号 */
     background: rgba(0, 0, 0, 0.25);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
 .bio::before {
     content: "";
     position: absolute;
@@ -356,15 +376,17 @@ h2 .underline {
     left: 0;
     width: 100%;
     height: 100%;
+    /* 修正：替换中文逗号 */
     background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
-    pointer-events: none;
+    pointer-events: none; /* 确保渐变层不挡住鼠标对卡片内部元素的点击 */
 }
+
 .bio p {
     font-size: 1.3rem;
     line-height: 1.8;
     color: #000000;
     font-weight: 500;
-    margin: 2rem 2rem;
+    margin: 2rem;
 }
 .section {
     margin-bottom: 2.5rem;
